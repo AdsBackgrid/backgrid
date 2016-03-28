@@ -17,6 +17,8 @@
 
   var territories = new Territories();
 
+  // This grid will add some aggregation information rows at the top and bottom of the grid.
+  // These aggregation rows will show some aggregation info such as sum or average value.
   var AggregateBody = Backgrid.Body.extend({
     initialize: function(options) {
       Backgrid.Body.prototype.initialize.apply(this, arguments);
