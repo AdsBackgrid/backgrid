@@ -65,6 +65,7 @@ module.exports = function (grunt) {
           "src/preamble.js",
           "src/formatter.js",
           "src/cell.js",
+          "src/pop-cell-editor.js",
           "src/column.js",
           "src/row.js",
           "src/header.js",

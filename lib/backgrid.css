@@ -32,7 +32,6 @@
   height: 20px;
   max-width: 250px;
   padding: 4px 5px;
-  overflow: hidden;
   line-height: 20px;
   text-align: left;
   text-overflow: ellipsis;
@@ -84,6 +83,10 @@
   padding: 0;
 }
 
+.backgrid td.editor.popup {
+  padding: 4px 5px;
+}
+
 .backgrid td.editor,
 .backgrid tbody tr:nth-child(odd) td.editor {
   background-color: rgba(82, 168, 236, 0.1);
@@ -123,6 +126,30 @@
           box-sizing: border-box;
   -webkit-appearance: none;
      -moz-appearance: none;
+}
+
+.backgrid td.editor.popup {
+  position: relative;
+}
+
+.backgrid td.editor.popup .pop-editor {
+  position: absolute;
+  z-index: 1000;
+  padding: 10px 5px;
+  white-space: nowrap;
+  background-color: white;
+  border: solid 1px black;
+}
+
+.backgrid td.editor.popup .pop-editor input {
+  margin-right: 5px;
+}
+
+.backgrid td.editor.popup .pop-editor input[type=text] {
+  display: inline;
+  width: 50%;
+  padding: 5px;
+  border: 1px solid #bbb;
 }
 
 .backgrid td.editor input[type=text]::-ms-clear {

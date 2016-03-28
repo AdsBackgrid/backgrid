@@ -271,6 +271,7 @@ var Cell = Backgrid.Cell = Backbone.View.extend({
     var columnName = this.column.get("name");
     $el.text(this.formatter.fromRaw(model.get(columnName), model));
     $el.addClass(columnName);
+    this.isCellEditorPopup() && $el.addClass('popup');
     this.updateStateClassesMaybe();
     this.delegateEvents();
     return this;
@@ -312,7 +313,7 @@ var Cell = Backgrid.Cell = Backbone.View.extend({
 
       // Need to redundantly undelegate events for Firefox
       this.undelegateEvents();
-      this.$el.empty();
+      !this.isCellEditorPopup() && this.$el.empty();
       this.$el.append(this.currentEditor.$el);
       this.currentEditor.render();
       this.$el.addClass("editor");
@@ -334,12 +335,19 @@ var Cell = Backgrid.Cell = Backbone.View.extend({
      Removes the editor and re-render in display mode.
   */
   exitEditMode: function () {
-    this.$el.removeClass("error");
     this.currentEditor.remove();
     this.stopListening(this.currentEditor);
     delete this.currentEditor;
     this.$el.removeClass("editor");
+    this.$el.removeClass("error");
     this.render();
+  },
+
+  /**
+      Judge if the cell editor is pop up or not
+  */
+  isCellEditorPopup: function () {
+    return this.editor && this.editor.prototype.isPopup;
   },
 
   /**
